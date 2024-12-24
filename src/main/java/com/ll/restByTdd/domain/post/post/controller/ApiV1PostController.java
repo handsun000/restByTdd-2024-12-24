@@ -1,5 +1,6 @@
 package com.ll.restByTdd.domain.post.post.controller;
 
+import com.ll.restByTdd.domain.post.post.dto.PostDto;
 import com.ll.restByTdd.domain.post.post.entity.Post;
 import com.ll.restByTdd.domain.post.post.service.PostService;
 import com.ll.restByTdd.global.rsData.RsData;
@@ -30,13 +31,16 @@ public class ApiV1PostController {
     }
 
     @GetMapping("/{id}")
-    public Post getItem(@PathVariable long id) {
-        return postService.findById(id);
+    public PostDto getItem(@PathVariable long id) {
+
+        return postService.findById(id)
+                .map(PostDto::new)
+                .orElseThrow();
     }
 
     @DeleteMapping("/{id}")
     public RsData deleteItem(@PathVariable long id) {
-        Post post = postService.findById(id);
+        Post post = postService.findById(id).get();
 
         postService.delete(post);
 
@@ -59,7 +63,7 @@ public class ApiV1PostController {
             @PathVariable long id,
             @RequestBody @Valid PostModifyReqBody reqBody
     ) {
-        Post post = postService.findById(id);
+        Post post = postService.findById(id).get();
 
         postService.modify(post, reqBody.title, reqBody.content);
 

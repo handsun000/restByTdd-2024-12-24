@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,8 +31,8 @@ public class PostService {
         return postRepository.findAllByOrderByIdDesc();
     }
 
-    public Post findById(long id) {
-        return postRepository.findById(id).get();
+    public Optional<Post> findById(long id) {
+        return postRepository.findById(id);
     }
 
     public void delete(Post post) {

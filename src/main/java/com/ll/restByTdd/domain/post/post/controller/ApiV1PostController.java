@@ -39,11 +39,8 @@ public class ApiV1PostController {
         return new RsData("200-1","%d번 글을 삭제하였습니다.".formatted(id));
     }
 
-    @AllArgsConstructor
-    @Getter
-    public static class PostModifyReqBody {
-        private String title;
-        private String content;
+    record PostModifyReqBody(String title,
+            String content) {
     }
 
     @PutMapping("/{id}")
@@ -54,7 +51,7 @@ public class ApiV1PostController {
     ) {
         Post post = postService.findById(id);
 
-        postService.modify(post, reqBody.getTitle(), reqBody.getContent());
+        postService.modify(post, reqBody.title, reqBody.content);
 
         return new RsData("200-1","%d번 글을 삭제하였습니다.".formatted(id));
     }

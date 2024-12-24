@@ -1,4 +1,4 @@
-package com.ll.restByTdd.global.initData.jpa.entity;
+package com.ll.restByTdd.global.jpa.entity;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

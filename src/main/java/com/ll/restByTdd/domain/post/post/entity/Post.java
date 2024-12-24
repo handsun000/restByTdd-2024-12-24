@@ -1,6 +1,6 @@
 package com.ll.restByTdd.domain.post.post.entity;
 
-import com.ll.restByTdd.global.initData.jpa.entity.BaseTime;
+import com.ll.restByTdd.global.jpa.entity.BaseTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.*;

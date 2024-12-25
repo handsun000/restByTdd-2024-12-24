@@ -11,7 +11,7 @@ public class PostDto {
     private long id;
     @JsonIgnore
     private LocalDateTime createAt;
-    @JsonIgn
+    @JsonIgnore
     private LocalDateTime modifyAt;
     private String title;
     private String content;
